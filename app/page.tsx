@@ -1,65 +1,160 @@
-import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+const learnerHighlights = [
+  {
+    title: "Track Learning Progress",
+    description:
+      "Follow enrolled apps, continue lessons, and monitor completion in one place.",
+  },
+  {
+    title: "Structured VR Modules",
+    description:
+      "Organize learning into apps, modules, lessons, videos, and supporting resources.",
+  },
+  {
+    title: "Simple Learner Flow",
+    description:
+      "Help learners move from dashboard to module to lesson without confusion.",
+  },
+];
+
+const instructorHighlights = [
+  {
+    title: "Manage Content Easily",
+    description:
+      "Create modules, edit lessons, attach documents, and publish learning material.",
+  },
+  {
+    title: "Instructor Dashboard",
+    description:
+      "See assigned apps, lesson counts, drafts, and published content quickly.",
+  },
+  {
+    title: "CMS-Style Workflow",
+    description:
+      "Give instructors a clean content management experience without touching code.",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="page-shell">
+      <section className="hero-section">
+        <div className="container hero-container">
+          <div className="hero-content">
+            <span className="badge badge-default">VR Learning Platform</span>
+
+            <h1 className="hero-title">
+              Learn and manage VR training content in one platform
+            </h1>
+
+            <p className="hero-text">
+              A clean learning experience for learners and a CMS-style dashboard
+              for instructors, built for structured VR apps, modules, lessons,
+              videos, notes, and resources.
+            </p>
+
+            <div className="hero-actions">
+              <Link href="/learn" className="btn btn-primary">
+                Go to Learner Portal
+              </Link>
+
+              <Link href="/instructor" className="btn btn-secondary">
+                Go to Instructor Portal
+              </Link>
+            </div>
+          </div>
+
+          <div className="hero-cards">
+            <div className="card card-padding">
+              <p className="card-label">Learner Features</p>
+              <h2 className="card-hero-title">Study with clarity</h2>
+              <p className="card-text">
+                Move from enrolled app to module to lesson with progress
+                tracking and attached learning resources.
+              </p>
+            </div>
+
+            <div className="card card-padding">
+              <p className="card-label">Instructor Features</p>
+              <h2 className="card-hero-title">Manage without code</h2>
+              <p className="card-text">
+                Create modules, edit lesson content, upload resources, and
+                publish updates from one dashboard.
+              </p>
+            </div>
+
+            <div className="card card-padding full-width-card">
+              <p className="card-label">Phase 1 Goal</p>
+              <h2 className="card-hero-title">
+                Build the core learner flow and instructor CMS flow first
+              </h2>
+              <p className="card-text">
+                Start with dashboards, app pages, module pages, lesson pages,
+                the lesson editor, and reusable layout components.
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="section">
+        <div className="container two-column-grid">
+          <div>
+            <h2 className="section-title">For Learners</h2>
+            <div className="stack-lg">
+              {learnerHighlights.map((item) => (
+                <div key={item.title} className="card card-padding">
+                  <h3 className="item-title">{item.title}</h3>
+                  <p className="item-text">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="section-title">For Instructors</h2>
+            <div className="stack-lg">
+              {instructorHighlights.map((item) => (
+                <div key={item.title} className="card card-padding">
+                  <h3 className="item-title">{item.title}</h3>
+                  <p className="item-text">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="section bottom-section">
+        <div className="container">
+          <div className="card card-padding">
+            <h2 className="section-title">Quick Access</h2>
+            <p className="item-text">
+              Use these routes to move directly into the platform sections
+              during development.
+            </p>
+
+            <div className="quick-access-grid">
+              <Link href="/learn" className="quick-link">
+                /learn
+              </Link>
+
+              <Link href="/learn/apps" className="quick-link">
+                /learn/apps
+              </Link>
+
+              <Link href="/instructor" className="quick-link">
+                /instructor
+              </Link>
+
+              <Link href="/instructor/apps" className="quick-link">
+                /instructor/apps
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

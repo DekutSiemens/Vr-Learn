@@ -1,0 +1,211 @@
+.page {
+    min-height: 100vh;
+    background: #f8fafc;
+    color: #0f172a;
+  }
+  
+  .heroSection {
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .heroContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  
+  .heroContent {
+    max-width: 42rem;
+  }
+  
+  .badge {
+    display: inline-flex;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  
+  .heroTitle {
+    margin-top: 1.5rem;
+    font-size: 2.5rem;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  
+  .heroText {
+    margin-top: 1.25rem;
+    max-width: 38rem;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #475569;
+  }
+  
+  .heroActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  
+  .primaryButton {
+    display: inline-block;
+    padding: 0.85rem 1.25rem;
+    border-radius: 0.75rem;
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .secondaryButton {
+    display: inline-block;
+    padding: 0.85rem 1.25rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.75rem;
+    background: #ffffff;
+    color: #334155;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .heroCards {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  }
+  
+  .cardLabel {
+    font-size: 0.875rem;
+    color: #64748b;
+  }
+  
+  .cardTitle {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .cardText {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #475569;
+  }
+  
+  .section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+  
+  .bottomSection {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+  }
+  
+  .twoColumnGrid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+  
+  .stack {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .itemTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+  
+  .itemText {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #475569;
+  }
+  
+  .quickAccessGrid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .quickLink {
+    display: block;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #334155;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+  
+  .quickLink:hover {
+    background: #f8fafc;
+  }
+  
+  @media (min-width: 640px) {
+    .quickAccessGrid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  
+    .heroTitle {
+      font-size: 3rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .heroContainer {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    .heroCards {
+      width: 100%;
+      max-width: 40rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  
+    .fullWidthCard {
+      grid-column: span 2 / span 2;
+    }
+  
+    .twoColumnGrid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  
+    .quickAccessGrid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
