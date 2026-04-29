@@ -45,7 +45,7 @@ canvas {
    Theme Variables
 ========================= */
 :root {
-  --background: #f8fafc;
+  --background: #fcfcfc;
   --foreground: #0f172a;
 
   --white: #ffffff;
@@ -113,6 +113,16 @@ canvas {
   padding: 5rem 0;
 }
 
+
+/* =========================
+   logo
+========================= */
+
+.logo {
+  max-width: 100px;
+
+}
+
 /* =========================
    Reusable Cards
 ========================= */
@@ -158,22 +168,27 @@ canvas {
 }
 
 .btn-primary {
-  background: var(--slate-900);
-  color: var(--white);
+  background: var(--white);
+  color: var(--slate-700);
+  border-color: var(--slate-700);
 }
 
 .btn-primary:hover {
-  opacity: 0.92;
+  background: var(--slate-500);
+  color: var(--white);
+ 
 }
 
 .btn-secondary {
   background: var(--white);
   color: var(--slate-700);
-  border-color: var(--slate-300);
+  border-color: var(--blue-600);
 }
 
 .btn-secondary:hover {
-  background: var(--slate-50);
+  background: var(--slate-500);
+  color: var(--white);
+  border-color: var(--slate-700);
 }
 
 .btn-danger {
@@ -184,6 +199,7 @@ canvas {
 .btn-danger:hover {
   opacity: 0.92;
 }
+
 
 /* =========================
    Reusable Badges
@@ -342,8 +358,8 @@ canvas {
 }
 
 .hero-container {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;

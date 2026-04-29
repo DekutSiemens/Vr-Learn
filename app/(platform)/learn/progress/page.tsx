@@ -7,17 +7,17 @@ const appProgress = [
       slug: "smscp-skilldrive",
     },
     {
-      title: "Wet Lab VR",
+      title: "VR Fluid Power System",
       modules: "2 / 4",
       lessons: "6 / 16",
       progress: 38,
-      slug: "wet-lab-vr",
+      slug: "fluid-power-vr",
     },
   ];
   
   const completions = [
     { lesson: "Sensor Basics", date: "Apr 20, 2026", context: "SMSCP SkillDrive / Module 1" },
-    { lesson: "Safety Introduction", date: "Apr 18, 2026", context: "Wet Lab VR / Module 1" },
+    { lesson: "Safety Introduction", date: "Apr 18, 2026", context: "VR Fluid Power System / Module 1" },
   ];
   
   export default function LearnProgressPage() {

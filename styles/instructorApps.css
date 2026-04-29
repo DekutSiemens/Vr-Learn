@@ -1,0 +1,147 @@
+.instructor-apps-page {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: #f8fafc;
+    min-height: 100vh;
+  }
+  
+  .instructor-apps-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .instructor-apps-title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  
+  .instructor-apps-subtitle {
+    margin: 0;
+    font-size: 14px;
+    color: #475569;
+  }
+  
+  .instructor-apps-filters {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 16px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  }
+  
+  .instructor-apps-input,
+  .instructor-apps-select {
+    width: 100%;
+    height: 44px;
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    padding: 0 16px;
+    font-size: 14px;
+    color: #0f172a;
+    background: #ffffff;
+    outline: none;
+  }
+  
+  .instructor-apps-input:focus,
+  .instructor-apps-select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  }
+  
+  .instructor-apps-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+  
+  .instructor-apps-card {
+    overflow: hidden;
+    border-radius: 24px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  }
+  
+  .instructor-apps-card-image {
+    width: 100%;
+    height: 176px;
+    background: #cbd5e1;
+  }
+  
+  .instructor-apps-card-body {
+    padding: 20px;
+  }
+  
+  .instructor-apps-card-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  
+  .instructor-apps-card-description {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #475569;
+  }
+  
+  .instructor-apps-card-meta {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #64748b;
+  }
+  
+  .instructor-apps-status-badge {
+    display: inline-flex;
+    margin-top: 12px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #dcfce7;
+    color: #15803d;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  .instructor-apps-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    padding: 10px 16px;
+    border-radius: 14px;
+    background: #0f172a;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+  }
+  
+  .instructor-apps-button:hover {
+    background: #1e293b;
+  }
+  
+  @media (min-width: 768px) {
+    .instructor-apps-filters {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  
+    .instructor-apps-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .instructor-apps-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }

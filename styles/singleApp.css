@@ -1,0 +1,272 @@
+.single-learning-app-page {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    background: #f8fafc;
+    min-height: 100vh;
+  }
+  
+  .single-learning-app-hero,
+  .single-learning-app-card,
+  .single-learning-app-module-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  }
+  
+  .single-learning-app-hero {
+    display: grid;
+    gap: 24px;
+    padding: 24px;
+    grid-template-columns: 1fr;
+  }
+  
+  .single-learning-app-hero-image {
+    width: 100%;
+    height: 224px;
+    border-radius: 24px;
+    background: #cbd5e1;
+  }
+  
+  .single-learning-app-hero-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .single-learning-app-label {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0;
+  }
+  
+  .single-learning-app-title {
+    margin: 4px 0 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: #0f172a;
+    text-transform: capitalize;
+  }
+  
+  .single-learning-app-description {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #475569;
+  }
+  
+  .single-learning-app-tags {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .single-learning-app-tag {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 14px;
+  }
+  
+  .single-learning-app-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .single-learning-app-primary-btn,
+  .single-learning-app-module-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: 14px;
+    background: #0f172a;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+  }
+  
+  .single-learning-app-primary-btn:hover,
+  .single-learning-app-module-btn:hover {
+    background: #1e293b;
+  }
+  
+  .single-learning-app-secondary-btn {
+    padding: 10px 16px;
+    border-radius: 14px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .single-learning-app-card {
+    padding: 24px;
+  }
+  
+  .single-learning-app-section-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  
+  .single-learning-app-about-grid {
+    margin-top: 16px;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+  
+  .single-learning-app-subtitle {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  
+  .single-learning-app-text {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #475569;
+  }
+  
+  .single-learning-app-list {
+    margin: 8px 0 0;
+    padding-left: 20px;
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  
+  .single-learning-app-modules-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .single-learning-app-modules-grid {
+    display: grid;
+    gap: 16px;
+  }
+  
+  .single-learning-app-module-card {
+    padding: 20px;
+  }
+  
+  .single-learning-app-module-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .single-learning-app-module-label {
+    margin: 0;
+    font-size: 14px;
+    color: #64748b;
+  }
+  
+  .single-learning-app-module-title {
+    margin: 4px 0 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  
+  .single-learning-app-module-description {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #475569;
+  }
+  
+  .single-learning-app-module-lessons {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #64748b;
+  }
+  
+  .single-learning-app-module-side {
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .single-learning-app-progress-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    overflow: hidden;
+  }
+  
+  .single-learning-app-progress-fill {
+    height: 8px;
+    border-radius: 999px;
+    background: #2563eb;
+  }
+  
+  .single-learning-app-progress-text {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #64748b;
+  }
+  
+  .single-learning-app-module-btn {
+    margin-top: 12px;
+  }
+  
+  .single-learning-app-resources {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .single-learning-app-resource-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 16px;
+    font-size: 14px;
+    color: #475569;
+  }
+  
+  .single-learning-app-resource-btn {
+    border: none;
+    background: transparent;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  @media (min-width: 768px) {
+    .single-learning-app-about-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  
+    .single-learning-app-module-layout {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .single-learning-app-hero {
+      grid-template-columns: 280px 1fr;
+    }
+  }

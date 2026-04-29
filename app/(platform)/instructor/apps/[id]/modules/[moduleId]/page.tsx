@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "@/styles/instructorModule.css";
 // import StatusBadge from "@/components/ui/StatusBadge";
 
 type PageProps = {
@@ -30,97 +31,101 @@ export default async function InstructorModulePage({ params }: PageProps) {
   const { id, moduleId } = await params;
 
   return (
-    <div className="space-y-6 p-6">
-      <div className="text-sm text-slate-500">
-        <Link href="/instructor" className="hover:underline">
+    <div className="instructor-module-page">
+      <div className="instructor-module-breadcrumbs">
+        <Link href="/instructor" className="instructor-module-breadcrumb-link">
           Instructor
-        </Link>{" "}
-        /{" "}
-        <Link href={`/instructor/apps/${id}`} className="hover:underline">
+        </Link>
+        <span>/</span>
+        <Link
+          href={`/instructor/apps/${id}`}
+          className="instructor-module-breadcrumb-link"
+        >
           App
-        </Link>{" "}
-        /{" "}
-        <span className="text-slate-700">Module</span>
+        </Link>
+        <span>/</span>
+        <span className="instructor-module-breadcrumb-current">Module</span>
       </div>
 
-      <section className="rounded-2xl border bg-white p-6 shadow-sm">
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <section className="instructor-module-hero">
+        <div className="instructor-module-hero-layout">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">
-              Module {moduleId}
-            </h1>
-            <p className="mt-2 text-sm text-slate-600">
+            <h1 className="instructor-module-title">Module {moduleId}</h1>
+
+            <p className="instructor-module-subtitle">
               Manage the lessons inside this module.
             </p>
-            <p className="mt-2 text-sm text-slate-500">
+
+            <p className="instructor-module-meta">
               Lesson count: {lessons.length}
             </p>
           </div>
 
           <Link
             href="/instructor/lessons/lesson-1/edit"
-            className="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white"
+            className="instructor-module-primary-btn"
           >
             Add Lesson
           </Link>
         </div>
       </section>
 
-      <section className="rounded-2xl border bg-white p-6 shadow-sm">
-        <h2 className="mb-4 text-xl font-semibold text-slate-900">Lessons</h2>
+      <section className="instructor-module-table-card">
+        <h2 className="instructor-module-section-title">Lessons</h2>
 
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-left text-sm">
-            <thead className="border-b text-slate-500">
+        <div className="instructor-module-table-wrapper">
+          <table className="instructor-module-table">
+            <thead>
               <tr>
-                <th className="py-3 pr-4">Order</th>
-                <th className="py-3 pr-4">Title</th>
-                <th className="py-3 pr-4">Status</th>
-                <th className="py-3 pr-4">Video</th>
-                <th className="py-3 pr-4">Documents</th>
-                <th className="py-3 pr-4">Last Updated</th>
-                <th className="py-3 pr-4">Actions</th>
+                <th>Order</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Video</th>
+                <th>Documents</th>
+                <th>Last Updated</th>
+                <th>Actions</th>
               </tr>
             </thead>
 
             <tbody>
               {lessons.map((lesson) => (
-                <tr key={lesson.order} className="border-b last:border-b-0">
-                  <td className="py-3 pr-4">{lesson.order}</td>
+                <tr key={lesson.order}>
+                  <td>{lesson.order}</td>
 
-                  <td className="py-3 pr-4 font-medium text-slate-900">
+                  <td className="instructor-module-table-strong">
                     {lesson.title}
                   </td>
 
-                  {/* <td className="py-3 pr-4">
-                    <StatusBadge
-                      label={lesson.status}
-                      tone={lesson.status === "Published" ? "success" : "warning"}
-                    />
-                  </td> */}
-
-                  <td className="py-3 pr-4">
-                    {lesson.video ? "Yes" : "No"}
+                  <td>
+                    <span
+                      className={
+                        lesson.status === "Published"
+                          ? "instructor-module-status instructor-module-status-published"
+                          : "instructor-module-status instructor-module-status-draft"
+                      }
+                    >
+                      {lesson.status}
+                    </span>
                   </td>
 
-                  <td className="py-3 pr-4">
-                    {lesson.documents ? "Yes" : "No"}
-                  </td>
+                  <td>{lesson.video ? "Yes" : "No"}</td>
 
-                  <td className="py-3 pr-4">{lesson.updated}</td>
+                  <td>{lesson.documents ? "Yes" : "No"}</td>
 
-                  <td className="py-3 pr-4">
-                    <div className="flex flex-wrap gap-3">
+                  <td>{lesson.updated}</td>
+
+                  <td>
+                    <div className="instructor-module-actions">
                       <Link
                         href={`/instructor/lessons/${lesson.id}/edit`}
-                        className="font-medium text-blue-600 hover:underline"
+                        className="instructor-module-action-link instructor-module-action-edit"
                       >
                         Edit
                       </Link>
 
                       <button
                         type="button"
-                        className="font-medium text-slate-700 hover:underline"
+                        className="instructor-module-action-link instructor-module-action-secondary"
                       >
                         {lesson.status === "Published"
                           ? "Unpublish"
@@ -129,7 +134,7 @@ export default async function InstructorModulePage({ params }: PageProps) {
 
                       <button
                         type="button"
-                        className="font-medium text-red-600 hover:underline"
+                        className="instructor-module-action-link instructor-module-action-delete"
                       >
                         Delete
                       </button>

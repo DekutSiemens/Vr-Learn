@@ -1,20 +1,23 @@
-// src/app/layout.tsx
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "VR Learning Platform",
-  description:
-    "A learner and instructor platform for structured VR learning content.",
+  description: "Learner and instructor platform for VR training content",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: ReactNode }>) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
