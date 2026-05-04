@@ -1,123 +1,247 @@
-import Link from "next/link";
-import Image from "next/image";
-import Logo from "../public/Virtual Mechatronics Lab Logo V2-01.png";
-import Navbar from "@/components/Navbar";
+"use client";
 
-const learnerHighlights = [
+import Image from "next/image";
+import {
+  BookOpen,
+  Boxes,
+  ChevronDown,
+  CircleHelp,
+  Code2,
+  Cpu,
+  GraduationCap,
+  Home,
+  Library,
+  Monitor,
+  Orbit,
+  Search,
+  Settings2,
+  Sparkles,
+  Users,
+} from "lucide-react";
+import type { ComponentType } from "react";
+import { useState } from "react";
+import styles from "./page.module.css";
+
+type UserRole = "student" | "instructor";
+
+type SidebarTopic = {
+  title: string;
+  icon: ComponentType<{ className?: string }>;
+  subtopics: string[];
+};
+
+const topics: SidebarTopic[] = [
   {
-    title: "Track Learning Progress",
-    description:
-      "Follow enrolled apps, continue lessons, and monitor completion in one place.",
+    title: "VR Development",
+    icon: Monitor,
+    subtopics: ["Unity Setup", "XR Interaction Toolkit", "Scripting for VR"],
   },
   {
-    title: "Structured VR Modules",
-    description:
-      "Organize learning into apps, modules, lessons, videos, and supporting resources.",
+    title: "App Management",
+    icon: Boxes,
+    subtopics: ["Meta Store Guidelines", "SideQuest Sideloading", "ADB Commands"],
   },
   {
-    title: "Simple Learner Flow",
-    description:
-      "Help learners move from dashboard to module to lesson without confusion.",
+    title: "Troubleshooting",
+    icon: CircleHelp,
+    subtopics: ["Link Cable Issues", "Tracking Errors", "Performance Optimization"],
+  },
+  {
+    title: "Resources",
+    icon: Library,
+    subtopics: ["Documentation", "Asset Store", "Community Forums"],
   },
 ];
 
-const instructorHighlights = [
+const moduleCards = [
   {
-    title: "Manage Content Easily",
-    description:
-      "Create modules, edit lessons, attach documents, and publish learning material.",
+    title: "XR Interaction Toolkit",
+    status: "In progress",
+    progress: "74%",
+    accentClass: styles.accentCyan,
   },
   {
-    title: "Instructor Dashboard",
-    description:
-      "See assigned apps, lesson counts, drafts, and published content quickly.",
+    title: "Physics Driven Grabbing",
+    status: "Next lesson",
+    progress: "42%",
+    accentClass: styles.accentFuchsia,
   },
   {
-    title: "CMS-Style Workflow",
-    description:
-      "Give instructors a clean content management experience without touching code.",
+    title: "Quest Build Pipeline",
+    status: "Ready",
+    progress: "91%",
+    accentClass: styles.accentAmber,
   },
+];
+
+const metrics = [
+  { label: "Lessons", value: "18", icon: BookOpen },
+  { label: "Labs", value: "06", icon: Orbit },
+  { label: "Scripts", value: "24", icon: Code2 },
 ];
 
 export default function HomePage() {
+  const [user, setUser] = useState<{ role: UserRole }>({ role: "student" });
+  const [openTopics, setOpenTopics] = useState<Record<string, boolean>>({
+    "VR Development": true,
+  });
+
+  const toggleTopic = (title: string) => {
+    setOpenTopics((current) => ({
+      ...current,
+      [title]: !current[title],
+    }));
+  };
+
+  const switchRole = () => {
+    setUser((current) => ({
+      role: current.role === "student" ? "instructor" : "student",
+    }));
+  };
+
   return (
-    <>
-
-      <main className="page-shell">
-        <section className="hero-section">
-          <div className="container hero-container">
-            <div className="hero-content">
-              <h1 className="hero-title">
-                Learn and manage VR training content in one platform
-              </h1>
-
-              <p className="hero-text">
-                A clean learning experience for learners and a CMS-style dashboard
-                for instructors, built for structured VR apps, modules, lessons,
-                videos, notes, and resources.
-              </p>
-
-              <div className="hero-actions">
-                <Link href="/learn" className="btn btn-primary">
-                  Go to Learner Portal
-                </Link>
-
-                <Link href="/instructor" className="btn btn-secondary">
-                  Go to Instructor Portal
-                </Link>
+    <main className={styles.page}>
+      <div className={styles.backgroundGlow} />
+      <div className={styles.shell}>
+        <div className={styles.layout}>
+          <aside className={styles.sidebar}>
+            <div className={styles.sidebarHeader}>
+              <div>
+                <p className={styles.sidebarKicker}>Course Map</p>
+                <h2 className={styles.sidebarTitle}>VR Development</h2>
               </div>
+              <Cpu className={styles.headerIcon} />
             </div>
 
-            <div className="hero-cards">
-              <div className="card card-padding">
-                <p className="card-label">Learner Features</p>
-                <h2 className="card-hero-title">Study with clarity</h2>
-                <p className="card-text">
-                  Move from enrolled app to module to lesson with progress
-                  tracking and attached learning resources.
-                </p>
-              </div>
+            <div className={styles.topicList}>
+              {topics.map((topic) => {
+                const TopicIcon = topic.icon;
+                const isOpen = openTopics[topic.title];
 
-              <div className="card card-padding">
-                <p className="card-label">Instructor Features</p>
-                <h2 className="card-hero-title">Manage without code</h2>
-                <p className="card-text">
-                  Create modules, edit lesson content, upload resources, and
-                  publish updates from one dashboard.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+                return (
+                  <div key={topic.title} className={styles.topic}>
+                    <button
+                      type="button"
+                      onClick={() => toggleTopic(topic.title)}
+                      className={styles.topicButton}
+                    >
+                      <span className={styles.topicTitle}>
+                        <TopicIcon className={styles.topicIcon} />
+                        <span>{topic.title}</span>
+                      </span>
+                      <ChevronDown
+                        className={`${styles.chevron} ${
+                          isOpen ? styles.chevronOpen : ""
+                        }`}
+                      />
+                    </button>
 
-        <section className="section">
-          <div className="container two-column-grid">
-            <div>
-              <h2 className="section-title">For Learners</h2>
-              <div className="stack-lg">
-                {learnerHighlights.map((item) => (
-                  <div key={item.title} className="card card-padding">
-                    <h3 className="item-title">{item.title}</h3>
-                    <p className="item-text">{item.description}</p>
+                    {isOpen ? (
+                      <div className={styles.subtopicList}>
+                        {topic.subtopics.map((subtopic) => (
+                          <a
+                            href={`#${subtopic.toLowerCase().replaceAll(" ", "-")}`}
+                            key={subtopic}
+                            className={styles.subtopicLink}
+                          >
+                            {subtopic}
+                          </a>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
-                ))}
+                );
+              })}
+            </div>
+          </aside>
+
+          <section id="dashboard" className={styles.content}>
+            <div className={styles.heroRow}>
+              <div>
+                <div className={styles.workspaceBadge}>
+                  <Sparkles className={styles.smallIcon} />
+                  Immersive LMS Workspace
+                </div>
+                <h1 className={styles.pageTitle}>
+                  Build, test, and publish VR learning experiences.
+                </h1>
               </div>
+
+              <label className={styles.searchBox}>
+                <Search className={styles.searchIcon} />
+                <input
+                  className={styles.searchInput}
+                  placeholder="Search lessons, labs, or resources"
+                />
+              </label>
             </div>
 
-            <div>
-              <h2 className="section-title">For Instructors</h2>
-              <div className="stack-lg">
-                {instructorHighlights.map((item) => (
-                  <div key={item.title} className="card card-padding">
-                    <h3 className="item-title">{item.title}</h3>
-                    <p className="item-text">{item.description}</p>
+            <div className={styles.metricsGrid}>
+              {metrics.map((metric) => {
+                const MetricIcon = metric.icon;
+
+                return (
+                  <div key={metric.label} className={styles.metricCard}>
+                    <MetricIcon className={styles.metricIcon} />
+                    <p className={styles.metricValue}>{metric.value}</p>
+                    <p className={styles.metricLabel}>{metric.label}</p>
                   </div>
-                ))}
+                );
+              })}
+            </div>
+
+            <div className={styles.dashboardGrid}>
+              <div className={styles.panel}>
+                <div className={styles.panelHeader}>
+                  <div>
+                    <p className={styles.panelKicker}>Active Modules</p>
+                    <h2 className={styles.panelTitle}>VR Development Course</h2>
+                  </div>
+                  <Monitor className={styles.panelIcon} />
+                </div>
+
+                <div className={styles.moduleGrid}>
+                  {moduleCards.map((module) => (
+                    <article key={module.title} className={styles.moduleCard}>
+                      <div className={`${styles.accentBar} ${module.accentClass}`} />
+                      <p className={styles.moduleStatus}>{module.status}</p>
+                      <h3 className={styles.moduleTitle}>{module.title}</h3>
+                      <div className={styles.progressTrack}>
+                        <div
+                          className={`${styles.progressFill} ${module.accentClass}`}
+                          style={{ width: module.progress }}
+                        />
+                      </div>
+                      <p className={styles.progressText}>
+                        {module.progress} complete
+                      </p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+
+              <div className={styles.labPanel}>
+                <p className={styles.labKicker}>Current Lab</p>
+                <h2 className={styles.labTitle}>Hand Presence Calibration</h2>
+                <p className={styles.labText}>
+                  Tune controller poses, attach interaction layers, and validate
+                  grab targets in a headset-ready scene.
+                </p>
+                <div className={styles.taskList}>
+                  {["Import XR Rig", "Bind Input Actions", "Profile Frame Time"].map(
+                    (task, index) => (
+                      <div key={task} className={styles.taskItem}>
+                        <span className={styles.taskNumber}>{index + 1}</span>
+                        <span>{task}</span>
+                      </div>
+                    ),
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </main>
-    </>
+          </section>
+        </div>
+      </div>
+    </main>
   );
 }

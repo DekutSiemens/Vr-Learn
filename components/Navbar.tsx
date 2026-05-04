@@ -1,44 +1,66 @@
-import Link from "next/link";
+"use client";
+
 import Image from "next/image";
-import "@/styles/navbar.css";
+import styles from "../app/page.module.css";
+import { Home, Users, GraduationCap, Settings2 } from "lucide-react";
+import { useState } from "react";
+type UserRole = "student" | "instructor";
 
 export default function Navbar() {
+  const [user, setUser] = useState<{ role: UserRole }>({ role: "student" });
+   const switchRole = () => {
+    setUser((current) => ({
+      role: current.role === "student" ? "instructor" : "student",
+    }));
+  };
   return (
-    <header className="navbar">
-      <div className="navbar-container">
-        <Link href="/" className="navbar-brand">
-          <Image
-            src="/Virtual Mechatronics Lab Logo V2-01.png"
-            alt="VML Logo"
-            width={42}
-            height={42}
-            priority
-            className="navbar-logo"
-          />
-          <div className="navbar-brand-text">
-            <p className="navbar-title">Virtual Mechatronics Labs</p>
-            <p className="navbar-subtitle">VR Learning Platform</p>
-          </div>
-        </Link>
+    <header className={styles.navbar}>
+     <div className={styles.navbarInner}>
+            <div className={styles.brand}>
+              <div className={styles.logoFrame}>
+                <Image
+                  src="/Virtual Mechatronics Lab Logo V2-01.png"
+                  alt="Virtual Mechatronics Labs logo"
+                  width={40}
+                  height={40}
+                  priority
+                />
+              </div>
+              <div>
+                <p className={styles.brandKicker}>VR Learn</p>
+                <p className={styles.brandTitle}>Development Dashboard</p>
+              </div>
+            </div>
 
-        <nav className="navbar-links">
-          <Link href="/" className="navbar-link">
-            Home
-          </Link>
-          <Link href="/learn" className="navbar-link">
-            Learner Portal
-          </Link>
-          <Link href="/learn/apps" className="navbar-link">
-            Learner Apps
-          </Link>
-          <Link href="/instructor" className="navbar-link">
-            Instructor Portal
-          </Link>
-          <Link href="/instructor/apps" className="navbar-link">
-            Instructor Apps
-          </Link>
-        </nav>
-      </div>
+            <div className={styles.navLinks}>
+              <a href="/" className={`${styles.navLink} ${styles.activeNavLink}`}>
+                <Home className={styles.smallIcon} />
+                Home
+              </a>
+
+              {/* Conditional rendering: instructors see Learners, while students see Instructors. */}
+              {user.role === "instructor" ? (
+                <a href="/learn" className={styles.navLink}>
+                  <Users className={styles.smallIcon} />
+                  Learners
+                </a>
+              ) : (
+                <a href="/instructors" className={styles.navLink}>
+                  <GraduationCap className={styles.smallIcon} />
+                  Instructors
+                </a>
+              )}
+
+              <button
+                type="button"
+                onClick={switchRole}
+                className={styles.roleButton}
+              >
+                <Settings2 className={styles.smallIcon} />
+                {user.role}
+              </button>
+            </div>
+          </div>
     </header>
   );
 }
