@@ -5,6 +5,8 @@
     gap: 24px;
     background: #f8fafc;
     min-height: 100vh;
+   margin: 0 auto;
+    max-width: 1200px;
   }
   
   .instructor-apps-header {
@@ -143,5 +145,40 @@
   @media (min-width: 1280px) {
     .instructor-apps-grid {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .instructor-apps-page {
+      gap: 20px;
+      padding: 16px;
+    }
+
+    .instructor-apps-title {
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .instructor-apps-filters,
+    .instructor-apps-card {
+      border-radius: 16px;
+    }
+
+    .instructor-apps-card-image {
+      height: 140px;
+    }
+
+    .instructor-apps-button {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .instructor-apps-page {
+      padding: 12px;
+    }
+
+    .instructor-apps-card-body {
+      padding: 16px;
     }
   }

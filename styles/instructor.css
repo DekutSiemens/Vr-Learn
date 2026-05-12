@@ -5,6 +5,8 @@
     gap: 32px;
     background: #f8fafc;
     min-height: 100vh;
+    margin: 0 auto;
+    max-width: 1200px;
   }
   
   .instructor-dashboard-header,
@@ -212,6 +214,7 @@
   
   .instructor-table {
     width: 100%;
+    min-width: 720px;
     border-collapse: collapse;
     text-align: left;
     font-size: 14px;
@@ -274,5 +277,59 @@
   
     .instructor-apps-grid {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .instructor-dashboard-page {
+      gap: 20px;
+      padding: 16px;
+    }
+
+    .instructor-dashboard-header,
+    .instructor-card,
+    .instructor-stat-card,
+    .instructor-app-card {
+      border-radius: 16px;
+    }
+
+    .instructor-dashboard-header,
+    .instructor-card {
+      padding: 18px;
+    }
+
+    .instructor-dashboard-title {
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .instructor-dashboard-header-actions {
+      max-width: none;
+    }
+
+    .instructor-quick-actions,
+    .instructor-primary-btn,
+    .instructor-secondary-btn {
+      width: 100%;
+    }
+
+    .instructor-app-image {
+      height: 140px;
+      border-radius: 16px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .instructor-dashboard-page {
+      padding: 12px;
+    }
+
+    .instructor-dashboard-header,
+    .instructor-card {
+      padding: 16px;
+    }
+
+    .instructor-section-title {
+      font-size: 20px;
     }
   }

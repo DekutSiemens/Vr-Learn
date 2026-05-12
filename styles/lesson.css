@@ -5,6 +5,8 @@
     gap: 24px;
     background: #f8fafc;
     min-height: 100vh;
+    margin: 0 auto;
+    max-width: 1200px;
   }
   
   .lesson-breadcrumbs {
@@ -284,5 +286,55 @@
   @media (min-width: 1280px) {
     .lesson-main-grid {
       grid-template-columns: 280px minmax(0, 1fr) 280px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .lesson-page {
+      gap: 20px;
+      padding: 16px;
+    }
+
+    .lesson-header-card,
+    .lesson-sidebar-card,
+    .lesson-card {
+      border-radius: 16px;
+    }
+
+    .lesson-header-card,
+    .lesson-sidebar-card,
+    .lesson-card {
+      padding: 18px;
+    }
+
+    .lesson-title {
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .lesson-video-placeholder {
+      border-radius: 16px;
+    }
+
+    .lesson-resource-row {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .lesson-page {
+      padding: 12px;
+    }
+
+    .lesson-header-card,
+    .lesson-sidebar-card,
+    .lesson-card {
+      padding: 16px;
+    }
+
+    .lesson-card-title {
+      font-size: 18px;
     }
   }

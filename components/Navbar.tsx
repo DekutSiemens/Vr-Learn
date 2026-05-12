@@ -1,18 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "../app/page.module.css";
-import { Home, Users, GraduationCap, Settings2 } from "lucide-react";
-import { useState } from "react";
-type UserRole = "student" | "instructor";
+import { Home, Settings2, Users } from "lucide-react";
 
 export default function Navbar() {
-  const [user, setUser] = useState<{ role: UserRole }>({ role: "student" });
-   const switchRole = () => {
-    setUser((current) => ({
-      role: current.role === "student" ? "instructor" : "student",
-    }));
-  };
+  const pathname = usePathname();
+
+  const navLinks = [
+    { href: "/", label: "Home", icon: Home },
+    { href: "/learn", label: "Learners", icon: Users },
+    { href: "/instructor", label: "Instructor", icon: Settings2 },
+  ];
+
   return (
     <header className={styles.navbar}>
      <div className={styles.navbarInner}>
@@ -33,32 +35,26 @@ export default function Navbar() {
             </div>
 
             <div className={styles.navLinks}>
-              <a href="/" className={`${styles.navLink} ${styles.activeNavLink}`}>
-                <Home className={styles.smallIcon} />
-                Home
-              </a>
+              {navLinks.map((item) => {
+                const Icon = item.icon;
+                const isActive =
+                  item.href === "/"
+                    ? pathname === "/"
+                    : pathname.startsWith(item.href);
 
-              {/* Conditional rendering: instructors see Learners, while students see Instructors. */}
-              {user.role === "instructor" ? (
-                <a href="/learn" className={styles.navLink}>
-                  <Users className={styles.smallIcon} />
-                  Learners
-                </a>
-              ) : (
-                <a href="/instructors" className={styles.navLink}>
-                  <GraduationCap className={styles.smallIcon} />
-                  Instructors
-                </a>
-              )}
-
-              <button
-                type="button"
-                onClick={switchRole}
-                className={styles.roleButton}
-              >
-                <Settings2 className={styles.smallIcon} />
-                {user.role}
-              </button>
+                return (
+                  <Link
+                    href={item.href}
+                    className={`${styles.navLink} ${
+                      isActive ? styles.activeNavLink : ""
+                    }`}
+                    key={item.href}
+                  >
+                    <Icon className={styles.smallIcon} />
+                    {item.label}
+                  </Link>
+                );
+              })}
             </div>
           </div>
     </header>

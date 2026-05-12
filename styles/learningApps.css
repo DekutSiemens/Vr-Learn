@@ -5,6 +5,8 @@
     gap: 24px;
     background: #f8fafc;
     min-height: 100vh;
+    margin: 0 auto;
+    max-width: 1200px;
   }
   
   .learning-apps-header {
@@ -154,5 +156,45 @@
   @media (min-width: 1280px) {
     .learning-apps-grid {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .learning-apps-page {
+      gap: 20px;
+      padding: 16px;
+    }
+
+    .learning-apps-title {
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .learning-apps-filters,
+    .learning-app-card {
+      border-radius: 16px;
+    }
+
+    .learning-app-card-image {
+      height: 140px;
+    }
+
+    .learning-app-meta {
+      flex-wrap: wrap;
+      gap: 8px 14px;
+    }
+
+    .learning-app-button {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .learning-apps-page {
+      padding: 12px;
+    }
+
+    .learning-app-card-body {
+      padding: 16px;
     }
   }

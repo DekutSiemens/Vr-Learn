@@ -5,6 +5,8 @@
     gap: 32px;
     background: #f8fafc;
     min-height: 100vh;
+  margin: 0 auto;
+    max-width: 1200px;
   }
   
   .single-learning-app-hero,
@@ -268,5 +270,66 @@
   @media (min-width: 1024px) {
     .single-learning-app-hero {
       grid-template-columns: 280px 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .single-learning-app-page {
+      gap: 20px;
+      padding: 16px;
+    }
+
+    .single-learning-app-hero,
+    .single-learning-app-card,
+    .single-learning-app-module-card {
+      border-radius: 16px;
+    }
+
+    .single-learning-app-hero,
+    .single-learning-app-card {
+      padding: 18px;
+    }
+
+    .single-learning-app-hero-image {
+      height: 150px;
+      border-radius: 16px;
+    }
+
+    .single-learning-app-title {
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .single-learning-app-actions,
+    .single-learning-app-primary-btn,
+    .single-learning-app-secondary-btn,
+    .single-learning-app-module-btn {
+      width: 100%;
+    }
+
+    .single-learning-app-module-side {
+      max-width: none;
+    }
+
+    .single-learning-app-resource-row {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .single-learning-app-page {
+      padding: 12px;
+    }
+
+    .single-learning-app-hero,
+    .single-learning-app-card,
+    .single-learning-app-module-card {
+      padding: 16px;
+    }
+
+    .single-learning-app-section-title {
+      font-size: 20px;
     }
   }

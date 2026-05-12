@@ -5,6 +5,8 @@
     gap: 24px;
     background: #f8fafc;
     min-height: 100vh;
+   margin: 0 auto;
+    max-width: 1200px;
   }
   
   .instructor-single-app-hero,
@@ -202,5 +204,53 @@
   @media (min-width: 1280px) {
     .instructor-single-app-stats-grid {
       grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .instructor-single-app-page {
+      gap: 20px;
+      padding: 16px;
+    }
+
+    .instructor-single-app-hero,
+    .instructor-single-app-stat-card,
+    .instructor-single-app-module-card {
+      border-radius: 16px;
+    }
+
+    .instructor-single-app-hero,
+    .instructor-single-app-stat-card,
+    .instructor-single-app-module-card {
+      padding: 18px;
+    }
+
+    .instructor-single-app-title {
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .instructor-single-app-actions,
+    .instructor-single-app-module-actions,
+    .instructor-single-app-primary-btn,
+    .instructor-single-app-secondary-btn,
+    .instructor-single-app-danger-btn {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .instructor-single-app-page {
+      padding: 12px;
+    }
+
+    .instructor-single-app-hero,
+    .instructor-single-app-stat-card,
+    .instructor-single-app-module-card {
+      padding: 16px;
+    }
+
+    .instructor-single-app-section-title {
+      font-size: 20px;
     }
   }

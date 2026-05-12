@@ -1,34 +1,50 @@
 import Link from "next/link";
 import "@/styles/module.css";
+import ModuleSubtopicViewer, { type Subtopic } from "./ModuleSubtopicViewer";
 
 type PageProps = {
   params: Promise<{ slug: string; modulesSlug: string }>;
 };
 
-const lessons = [
+const subtopics: Subtopic[] = [
   {
-    order: 1,
+    id: "introduction",
     title: "Introduction to the pH Meter",
     description: "Understand the parts and role of the pH meter.",
     type: "video",
     duration: "6 min",
     status: "Completed",
+    content:
+      "Learn what a pH meter measures, how the electrode senses hydrogen ion activity, and why stable readings matter before any experiment begins.",
+    notes:
+      "Check that the probe is clean, hydrated, and connected before starting the lesson.",
+    resources: ["pH meter parts diagram", "Electrode handling checklist"],
   },
   {
-    order: 2,
+    id: "prepare-buffer",
     title: "Prepare the Buffer Solution",
     description: "Set up the right solution for calibration.",
     type: "document",
     duration: "8 min",
     status: "In Progress",
+    content:
+      "Prepare the calibration buffer by selecting the correct pH standard, pouring enough solution into a clean beaker, and avoiding contamination from previous samples.",
+    notes:
+      "Use fresh buffer solution and never pour used buffer back into the stock bottle.",
+    resources: ["Buffer preparation worksheet", "Calibration safety notes"],
   },
   {
-    order: 3,
+    id: "calibrate-meter",
     title: "Calibrate the Meter",
     description: "Perform accurate calibration step by step.",
     type: "note",
     duration: "10 min",
     status: "Not Started",
+    content:
+      "Calibrate the meter using the prepared buffer, wait for readings to stabilize, confirm the calibration point, and rinse the probe between solutions.",
+    notes:
+      "Stable calibration is required before measuring unknown samples.",
+    resources: ["Calibration sequence guide", "Troubleshooting unstable readings"],
   },
 ];
 
@@ -70,7 +86,7 @@ export default async function LearningModulePage({ params }: PageProps) {
 
       <section className="learning-module-progress-card">
         <div className="learning-module-progress-header">
-          <span>3 of 8 lessons completed</span>
+          <span>1 of {subtopics.length} lessons completed</span>
           <span>38%</span>
         </div>
 
@@ -79,50 +95,7 @@ export default async function LearningModulePage({ params }: PageProps) {
         </div>
       </section>
 
-      <section className="learning-module-lessons-section">
-        <h2 className="learning-module-section-title">Lessons</h2>
-
-        <div className="learning-module-lessons-list">
-          {lessons.map((lesson) => (
-            <div key={lesson.order} className="learning-module-lesson-card">
-              <div className="learning-module-lesson-layout">
-                <div>
-                  <p className="learning-module-lesson-label">
-                    Lesson {lesson.order}
-                  </p>
-
-                  <h3 className="learning-module-lesson-title">
-                    {lesson.title}
-                  </h3>
-
-                  <p className="learning-module-lesson-description">
-                    {lesson.description}
-                  </p>
-
-                  <div className="learning-module-tags">
-                    <span className="learning-module-tag">{lesson.type}</span>
-                    <span className="learning-module-tag">{lesson.duration}</span>
-                    <span className="learning-module-tag">{lesson.status}</span>
-                  </div>
-                </div>
-
-                <Link
-                  href={`/learn/lessons/${lesson.title
-                    .toLowerCase()
-                    .replace(/\s+/g, "-")}`}
-                  className="learning-module-lesson-button"
-                >
-                  {lesson.status === "Completed"
-                    ? "Review"
-                    : lesson.status === "In Progress"
-                    ? "Continue"
-                    : "Start"}
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <ModuleSubtopicViewer subtopics={subtopics} />
     </div>
   );
 }

@@ -5,6 +5,8 @@
     gap: 24px;
     background: #f8fafc;
     min-height: 100vh;
+    margin: 0 auto;
+    max-width: 1200px;
   }
   
   .instructor-module-breadcrumbs {
@@ -191,5 +193,46 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .instructor-module-page {
+      gap: 20px;
+      padding: 16px;
+    }
+
+    .instructor-module-hero,
+    .instructor-module-table-card {
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .instructor-module-title {
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .instructor-module-primary-btn {
+      width: 100%;
+    }
+
+    .instructor-module-table {
+      min-width: 760px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .instructor-module-page {
+      padding: 12px;
+    }
+
+    .instructor-module-hero,
+    .instructor-module-table-card {
+      padding: 16px;
+    }
+
+    .instructor-module-section-title {
+      font-size: 20px;
     }
   }

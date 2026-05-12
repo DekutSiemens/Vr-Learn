@@ -1,6 +1,6 @@
 "use client";
 
-import "@/styles/learn.css";
+import "@/styles/learner.css";
 
 const stats = [
   { label: "Enrolled Apps", value: 4 },
