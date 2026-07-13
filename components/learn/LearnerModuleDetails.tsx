@@ -51,6 +51,8 @@ export default function LearnerModuleDetails({
           : "Not Started",
         content: lesson.content || lesson.description,
         notes: lesson.description,
+        videoUrl: lesson.videoUrl,
+        documentUrl: lesson.documentUrl,
         resources: [lesson.videoUrl, lesson.documentUrl].filter(Boolean) as string[],
       })),
     [completedLessonIds, lessons],
