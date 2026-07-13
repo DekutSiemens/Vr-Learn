@@ -8,11 +8,13 @@ import { Home, Settings2, Users } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const isInstructorArea = pathname.startsWith("/instructor");
 
   const navLinks = [
     { href: "/", label: "Home", icon: Home },
-    { href: "/learn", label: "Learners", icon: Users },
-    { href: "/instructor", label: "Instructor", icon: Settings2 },
+    isInstructorArea
+      ? { href: "/instructor", label: "Instructor", icon: Settings2 }
+      : { href: "/learn", label: "Learner", icon: Users },
   ];
 
   return (
@@ -30,7 +32,9 @@ export default function Navbar() {
               </div>
               <div>
                 <p className={styles.brandKicker}>VR Learn</p>
-                <p className={styles.brandTitle}>Development Dashboard</p>
+                <p className={styles.brandTitle}>
+                  {isInstructorArea ? "Instructor Studio" : "Learning Hub"}
+                </p>
               </div>
             </div>
 

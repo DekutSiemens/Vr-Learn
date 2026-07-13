@@ -1,6 +1,8 @@
 .learn-docs-page {
   min-height: 100vh;
-  background: #f8fafc;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 32rem),
+    #f8fafc;
   color: #172033;
 }
 
@@ -13,6 +15,7 @@
   background: #ffffff;
   border-right: 1px solid #dfe6ef;
   border-left: 1px solid #dfe6ef;
+  box-shadow: 0 20px 70px rgba(15, 23, 42, 0.08);
 }
 
 .learn-docs-sidebar {
@@ -145,7 +148,7 @@
 
 .learn-docs-content {
   min-width: 0;
-  padding: 2rem 1.25rem 4rem;
+  padding: clamp(1rem, 3vw, 3rem) clamp(1rem, 3vw, 2.5rem) 4rem;
 }
 
 .learn-docs-page-header {
@@ -154,8 +157,8 @@
 
 .learn-docs-content.is-welcome-content {
   background:
-    linear-gradient(145deg, rgba(255, 238, 239, 0.92), rgba(222, 235, 255, 0.88) 45%, rgba(217, 250, 234, 0.86)),
-    #e9f4fb;
+    radial-gradient(circle at top right, rgba(37, 99, 235, 0.16), transparent 28rem),
+    #f8fafc;
 }
 
 .is-welcome-content .learn-docs-page-header {
@@ -163,12 +166,13 @@
   max-width: none;
   min-height: 18rem;
   overflow: hidden;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   background:
-    linear-gradient(90deg, rgba(20, 30, 54, 0.72), rgba(60, 44, 128, 0.34)),
-    linear-gradient(135deg, #5d6ea7 0%, #8a62ff 48%, #cfb9ff 100%);
-  padding: 3rem 2rem;
+    linear-gradient(90deg, rgba(15, 23, 42, 0.84), rgba(29, 78, 216, 0.62)),
+    linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%);
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem);
   color: #ffffff;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
 }
 
 .is-welcome-content .learn-docs-page-header::before,
@@ -177,8 +181,8 @@
   content: "";
   transform: rotate(-34deg);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  background: linear-gradient(135deg, rgba(76, 49, 238, 0.95), rgba(194, 137, 255, 0.86));
-  box-shadow: 0 1.5rem 4rem rgba(42, 20, 132, 0.32);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(147, 197, 253, 0.22));
+  box-shadow: 0 1.5rem 4rem rgba(15, 23, 42, 0.22);
 }
 
 .is-welcome-content .learn-docs-page-header::before {
@@ -217,9 +221,11 @@
 }
 
 .is-welcome-content .learn-docs-section-list {
-  border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.5);
-  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.82);
+  padding: clamp(1rem, 3vw, 1.5rem);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
 }
 
 .learn-docs-breadcrumb {
@@ -233,7 +239,7 @@
 .learn-docs-content h1 {
   margin-top: 0.5rem;
   color: #172033;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   letter-spacing: 0;
   line-height: 1.08;
@@ -252,7 +258,7 @@
   gap: 2rem;
   width: 100%;
   max-width: 48rem;
-  margin-top: 2.5rem;
+  margin-top: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .learn-docs-section {

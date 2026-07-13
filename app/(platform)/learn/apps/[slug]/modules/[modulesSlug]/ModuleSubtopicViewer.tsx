@@ -16,12 +16,15 @@ export type Subtopic = {
 
 type ModuleSubtopicViewerProps = {
   subtopics: Subtopic[];
+  onCompleteLesson?: (lessonId: string) => Promise<void>;
 };
 
 export default function ModuleSubtopicViewer({
   subtopics,
+  onCompleteLesson,
 }: ModuleSubtopicViewerProps) {
   const [activeSubtopicId, setActiveSubtopicId] = useState(subtopics[0]?.id ?? "");
+  const [completingLessonId, setCompletingLessonId] = useState("");
 
   const activeSubtopic =
     subtopics.find((subtopic) => subtopic.id === activeSubtopicId) ??
@@ -30,6 +33,17 @@ export default function ModuleSubtopicViewer({
   if (!activeSubtopic) {
     return null;
   }
+
+  const handleComplete = async () => {
+    if (!onCompleteLesson) return;
+
+    setCompletingLessonId(activeSubtopic.id);
+    try {
+      await onCompleteLesson(activeSubtopic.id);
+    } finally {
+      setCompletingLessonId("");
+    }
+  };
 
   return (
     <section className="learning-module-workspace">
@@ -117,6 +131,24 @@ export default function ModuleSubtopicViewer({
               ))}
             </ul>
           </section>
+        ) : null}
+
+        {onCompleteLesson ? (
+          <button
+            type="button"
+            className="learning-module-complete-btn"
+            onClick={handleComplete}
+            disabled={
+              activeSubtopic.status === "Completed" ||
+              completingLessonId === activeSubtopic.id
+            }
+          >
+            {activeSubtopic.status === "Completed"
+              ? "Lesson Completed"
+              : completingLessonId === activeSubtopic.id
+                ? "Saving..."
+                : "Mark Lesson Complete"}
+          </button>
         ) : null}
       </article>
     </section>
