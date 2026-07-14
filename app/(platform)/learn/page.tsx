@@ -6,9 +6,14 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { learnerProgressApi } from "@/lib/api/services";
 import type { LearnerDashboard } from "@/lib/api/types";
+import useCurrentUser, {
+  getUserFirstName,
+} from "@/components/auth/useCurrentUser";
 
 export default function LearnDashboardPage() {
+  const user = useCurrentUser();
   const [dashboard, setDashboard] = useState<LearnerDashboard | null>(null);
+  const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [selectingAppId, setSelectingAppId] = useState("");
   const [error, setError] = useState("");
@@ -36,6 +41,16 @@ export default function LearnDashboardPage() {
 
   const learningApps = dashboard?.apps ?? [];
   const continueLearning = dashboard?.continueLearning ?? null;
+  const normalizedQuery = query.trim().toLowerCase();
+  const filteredLearningApps = learningApps.filter(
+    (app) =>
+      !normalizedQuery ||
+      [app.title, app.description, app.status]
+        .join(" ")
+        .toLowerCase()
+        .includes(normalizedQuery),
+  );
+  const firstName = getUserFirstName(user, "Learner");
 
   const dashboardStats = useMemo(
     () => [
@@ -78,16 +93,20 @@ export default function LearnDashboardPage() {
       <header className="learn-header">
         <div>
           <h1 className="learn-title">Learning Dashboard</h1>
-          <p className="learn-subtitle">Welcome back, Learner</p>
+          <p className="learn-subtitle">Welcome back, {firstName}</p>
         </div>
 
         <div className="learn-header-actions">
           <input
             type="text"
-            placeholder="Search lessons, apps, or modules..."
+            placeholder="Search apps..."
             className="learn-search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            aria-label="Search learning apps"
           />
-          <div className="learn-avatar">D</div>
+          {/* <span className="learn-user-name">{firstName}</span> */}
+          <div className="learn-avatar">{firstName.charAt(0).toUpperCase()}</div>
         </div>
       </header>
 
@@ -184,10 +203,14 @@ export default function LearnDashboardPage() {
           {isLoading && (
             <p className="instructor-muted-message">Loading apps...</p>
           )}
-          {!isLoading && !error && learningApps.length === 0 && (
-            <p className="instructor-muted-message">No published apps found.</p>
+          {!isLoading && !error && filteredLearningApps.length === 0 && (
+            <p className="instructor-muted-message">
+              {query
+                ? `No apps match “${query.trim()}”.`
+                : "No published apps found."}
+            </p>
           )}
-          {learningApps.map((app) => {
+          {filteredLearningApps.map((app) => {
             const progress = app.progress;
             const progressPercent = progress?.percent ?? 0;
 

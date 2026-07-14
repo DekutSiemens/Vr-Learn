@@ -5,16 +5,26 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "../app/page.module.css";
 import { Home, Settings2, Users } from "lucide-react";
+import type { AuthUser } from "@/lib/api/types";
+import useCurrentUser from "@/components/auth/useCurrentUser";
+
+const hasInstructorAccess = (user: AuthUser) =>
+  user.role === "DEVELOPER" ||
+  user.role === "ADMIN" ||
+  Boolean(user.developerEnabled || user.developer);
 
 export default function Navbar() {
   const pathname = usePathname();
-  const isInstructorArea = pathname.startsWith("/instructor");
+  const user = useCurrentUser();
+  const isInstructor = user
+    ? hasInstructorAccess(user)
+    : pathname.startsWith("/instructor");
 
   const navLinks = [
     { href: "/", label: "Home", icon: Home },
-    isInstructorArea
+    isInstructor
       ? { href: "/instructor", label: "Instructor", icon: Settings2 }
-      : { href: "/learn", label: "Learner", icon: Users },
+      : { href: "/learn", label: "Learner Dashboard", icon: Users },
   ];
 
   return (
@@ -33,7 +43,7 @@ export default function Navbar() {
               <div>
                 <p className={styles.brandKicker}>VR Learn</p>
                 <p className={styles.brandTitle}>
-                  {isInstructorArea ? "Instructor Studio" : "Learning Hub"}
+                  {isInstructor ? "Instructor Studio" : "Learning Hub"}
                 </p>
               </div>
             </div>

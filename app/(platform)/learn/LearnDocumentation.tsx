@@ -53,7 +53,7 @@ export default function LearnDocumentation() {
               }`}
               onClick={() => setActiveId("welcome-creators")}
             >
-              Welcome creators!
+              Welcome!
             </button>
           </div>
 

@@ -5,9 +5,14 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { instructorAppsApi } from "@/lib/api/services";
 import type { LearningApp } from "@/lib/api/types";
+import useCurrentUser, {
+  getUserFirstName,
+} from "@/components/auth/useCurrentUser";
 
 export default function InstructorDashboard() {
+  const user = useCurrentUser();
   const [apps, setApps] = useState<LearningApp[]>([]);
+  const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -52,6 +57,17 @@ export default function InstructorDashboard() {
     { label: "Published Apps", value: totals.published },
   ];
 
+  const normalizedQuery = query.trim().toLowerCase();
+  const filteredApps = apps.filter(
+    (app) =>
+      !normalizedQuery ||
+      [app.title, app.description, app.status]
+        .join(" ")
+        .toLowerCase()
+        .includes(normalizedQuery),
+  );
+  const firstName = getUserFirstName(user, "Instructor");
+
   return (
     <div className="instructor-dashboard-page">
       <header className="instructor-dashboard-header">
@@ -65,10 +81,16 @@ export default function InstructorDashboard() {
         <div className="instructor-dashboard-header-actions">
           <input
             type="text"
-            placeholder="Search apps or lessons..."
+            placeholder="Search apps..."
             className="instructor-dashboard-search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            aria-label="Search instructor apps"
           />
-          <div className="instructor-dashboard-avatar">I</div>
+          {/* <span className="instructor-dashboard-user-name">{firstName}</span> */}
+          <div className="instructor-dashboard-avatar">
+            {firstName.charAt(0).toUpperCase()}
+          </div>
         </div>
       </header>
 
@@ -101,14 +123,16 @@ export default function InstructorDashboard() {
       <section className="instructor-section">
         <h2 className="instructor-section-title">Uploaded Store Apps</h2>
 
-        {!isLoading && !error && apps.length === 0 && (
+        {!isLoading && !error && filteredApps.length === 0 && (
           <p className="instructor-muted-message">
-            No Store uploads found for this developer account.
+            {query
+              ? `No apps match “${query.trim()}”.`
+              : "No Store uploads found for this developer account."}
           </p>
         )}
 
         <div className="instructor-apps-grid">
-          {apps.slice(0, 3).map((app) => {
+          {filteredApps.slice(0, 3).map((app) => {
             const imageUrl = app.iconUrl || app.heroImageUrl;
 
             return (

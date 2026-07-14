@@ -1,6 +1,6 @@
 import "@/styles/learn.css";
-import LearnEntryRedirect from "@/components/auth/LearnEntryRedirect";
+import LearnDocumentation from "@/app/(platform)/learn/LearnDocumentation";
 
 export default function LearnHomePage() {
-  return <LearnEntryRedirect />;
+  return <LearnDocumentation />;
 }

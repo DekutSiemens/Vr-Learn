@@ -79,6 +79,13 @@
     gap: 16px;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
   }
+
+  .learn-user-name {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
   
   .stat-card,
   .section-card,
