@@ -152,7 +152,7 @@ export default function InstructorDashboard() {
                 <h3 className="instructor-app-title">{app.title}</h3>
 
                 <p className="instructor-app-meta">
-                  {app.modules} modules - {app.lessons} lessons
+                  {app.modules} modules - {app.learnersCount} {app.learnersCount === 1 ? "learner" : "learners"}
                 </p>
 
                 <span className="instructor-app-status">{app.status}</span>

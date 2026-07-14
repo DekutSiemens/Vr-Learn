@@ -33,6 +33,7 @@ export type ApiApp = {
   published?: boolean;
   modulesCount?: number;
   lessonsCount?: number;
+  learnersCount?: number;
   modules?: unknown[] | number;
   lessons?: unknown[] | number;
   updatedAt?: string;
@@ -49,6 +50,7 @@ export type LearningApp = {
   status: string;
   modules: number;
   lessons: number;
+  learnersCount: number;
   updatedAt?: string;
   progress?: {
     totalLessons: number;
@@ -155,6 +157,7 @@ export const normalizeApp = (app: ApiApp): LearningApp => {
     status: app.status ?? (app.published ? "Published" : "Draft"),
     modules: app.modulesCount ?? countItems(app.modules),
     lessons: app.lessonsCount ?? countItems(app.lessons),
+    learnersCount: Number(app.learnersCount ?? 0),
     updatedAt: app.updatedAt,
     progress: app.progress,
   };

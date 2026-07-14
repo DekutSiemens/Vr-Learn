@@ -124,7 +124,7 @@ export default function InstructorAppsList() {
                 </p>
 
                 <p className="instructor-apps-card-meta">
-                  {app.modules} modules - {app.lessons} lessons
+                  {app.modules} modules - {app.learnersCount === 1 ? "learner" : "learners"}
                 </p>
 
                 <span className="instructor-apps-status-badge">
