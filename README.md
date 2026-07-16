@@ -1,4 +1,4 @@
-# VR Learn Frontend
+# VR Learn
 
 This is the Next.js frontend for the learning area. It talks to the Nest backend API; it does not connect directly to Postgres, Redis, Resend, or Mailtrap.
 
