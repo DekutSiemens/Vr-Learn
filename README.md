@@ -17,7 +17,7 @@ The file is already ignored by git. If your backend uses a different port, chang
 Start the backend requirements first from the backend project:
 
 ```bash
-cd D:\SiemensVr\store\improved-succotash\Backend
+cd Backend
 docker compose up -d
 npm run prisma:generate
 npm run prisma:migrate
@@ -28,7 +28,7 @@ The backend `.env` should include:
 
 ```bash
 PORT=3008
-DATABASE_URL=postgresql://postgres:password@localhost:5432/vrstore_local
+DATABASE_URL=postgresql://username:password@localhost:5432/vrstore
 REDIS_URL=redis://localhost:6379
 CORS_ORIGINS=http://localhost:4000
 ```
@@ -48,7 +48,7 @@ EMAIL_FROM_ADDRESS=test@example.com
 Then start this frontend:
 
 ```bash
-cd D:\SiemensVr\store\Vr-Learn
+cd Vr-Learn
 npm run dev
 ```
 
